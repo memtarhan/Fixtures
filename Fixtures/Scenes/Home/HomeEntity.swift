@@ -17,6 +17,7 @@ struct HomeEntity {
             let venue: String
             let score: String
             let competition: String
+            var notificationOn: Bool
         }
     }
 }

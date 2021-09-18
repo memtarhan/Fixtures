@@ -10,7 +10,7 @@ import Foundation
 extension Date {
     var asMatchDate: String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EE d/m"
+        dateFormatter.dateFormat = "EE d/M"
         return dateFormatter.string(from: self)
     }
 }

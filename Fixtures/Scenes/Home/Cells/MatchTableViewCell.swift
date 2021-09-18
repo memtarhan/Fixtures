@@ -15,19 +15,33 @@ class MatchTableViewCell: UITableViewCell {
     @IBOutlet var homeTeamNameLabel: UILabel!
     @IBOutlet var awayTeamNameLabel: UILabel!
     @IBOutlet var venueLabel: UILabel!
-    @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var competitionLabel: UILabel!
-    
+    @IBOutlet var scoreLabel: UILabel!
+    @IBOutlet var competitionLabel: UILabel!
+    @IBOutlet var notificationButton: UIButton!
+
+    private var viewModel: HomeEntity.Init.ViewModel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+    }
+
+    override func prepareForReuse() {
+        notificationButton.setImage(UIImage(named: "notificationOff"), for: [])
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
 
+    @IBAction func didTapNotification(_ sender: UIButton) {
+        viewModel.notificationOn = !viewModel.notificationOn
+        let image: UIImage? = viewModel.notificationOn ? UIImage(named: "notificationOn") : UIImage(named: "notificationOff")
+        sender.setImage(image, for: [])
+    }
+
     func configure(_ viewModel: HomeEntity.Init.ViewModel) {
+        self.viewModel = viewModel
+
         dateLabel.text = viewModel.date
         periodLabel.text = viewModel.period
         homeTeamNameLabel.text = viewModel.homeTeamName
