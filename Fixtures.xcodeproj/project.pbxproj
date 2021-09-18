@@ -18,6 +18,10 @@
 		436097AF26F5F76400780016 /* HomeAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436097AE26F5F76400780016 /* HomeAssembly.swift */; };
 		436097B126F5F7D200780016 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436097B026F5F7D200780016 /* HomeInteractor.swift */; };
 		436097B326F5F7FF00780016 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436097B226F5F7FF00780016 /* HomePresenter.swift */; };
+		43E8922426F5FB43006BE3F0 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8922326F5FB43006BE3F0 /* Match.swift */; };
+		43E8922726F5FC52006BE3F0 /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8922626F5FC52006BE3F0 /* APIHelper.swift */; };
+		43E8922926F5FCB1006BE3F0 /* SportsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8922826F5FCB1006BE3F0 /* SportsType.swift */; };
+		43E8922C26F6039B006BE3F0 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8922B26F6039B006BE3F0 /* DateFormatter+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,10 @@
 		436097AE26F5F76400780016 /* HomeAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAssembly.swift; sourceTree = "<group>"; };
 		436097B026F5F7D200780016 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		436097B226F5F7FF00780016 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		43E8922326F5FB43006BE3F0 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		43E8922626F5FC52006BE3F0 /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
+		43E8922826F5FCB1006BE3F0 /* SportsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsType.swift; sourceTree = "<group>"; };
+		43E8922B26F6039B006BE3F0 /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +115,9 @@
 			children = (
 				436097AD26F5F75800780016 /* DI */,
 				436097A726F5F61900780016 /* Scenes */,
+				43E8922226F5FB34006BE3F0 /* Models */,
+				43E8922A26F60390006BE3F0 /* Extensions */,
+				43E8922526F5FC48006BE3F0 /* Helpers */,
 				4360977726F5F58100780016 /* AppDelegate.swift */,
 				4360977926F5F58100780016 /* SceneDelegate.swift */,
 				4360978026F5F58100780016 /* Assets.xcassets */,
@@ -159,6 +170,31 @@
 				436097AE26F5F76400780016 /* HomeAssembly.swift */,
 			);
 			path = DI;
+			sourceTree = "<group>";
+		};
+		43E8922226F5FB34006BE3F0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				43E8922326F5FB43006BE3F0 /* Match.swift */,
+				43E8922826F5FCB1006BE3F0 /* SportsType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		43E8922526F5FC48006BE3F0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				43E8922626F5FC52006BE3F0 /* APIHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		43E8922A26F60390006BE3F0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				43E8922B26F6039B006BE3F0 /* DateFormatter+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,8 +331,12 @@
 				4360977A26F5F58100780016 /* SceneDelegate.swift in Sources */,
 				436097AF26F5F76400780016 /* HomeAssembly.swift in Sources */,
 				436097B326F5F7FF00780016 /* HomePresenter.swift in Sources */,
+				43E8922C26F6039B006BE3F0 /* DateFormatter+.swift in Sources */,
+				43E8922726F5FC52006BE3F0 /* APIHelper.swift in Sources */,
 				436097B126F5F7D200780016 /* HomeInteractor.swift in Sources */,
 				436097AB26F5F64200780016 /* HomeViewController.swift in Sources */,
+				43E8922426F5FB43006BE3F0 /* Match.swift in Sources */,
+				43E8922926F5FCB1006BE3F0 /* SportsType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +507,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2L9L899V66;
 				INFOPLIST_FILE = Fixtures/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -486,6 +527,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2L9L899V66;
 				INFOPLIST_FILE = Fixtures/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
