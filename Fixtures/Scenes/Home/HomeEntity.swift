@@ -25,6 +25,7 @@ struct HomeEntity {
             let score: String?
             let competition: String?
             var notificationOn: Bool
+            var matchCenterAvailable: Bool
         }
     }
 }

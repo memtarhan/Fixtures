@@ -73,12 +73,13 @@ class HomePresenterImpl: HomePresenter {
         let viewModels = matches.map { match in
             HomeEntity.Match.ViewModel(date: match.date.asMatchDate,
                                        period: match.period,
-                                       homeTeamName: match.homeTeam.name,
-                                       awayTeamName: match.awayTeam.name,
+                                       homeTeamName: match.homeTeam.abbreviation,
+                                       awayTeamName: match.awayTeam.abbreviation,
                                        venue: match.venue?.name,
                                        score: "\(match.homeTeam.score ?? 0)-\(match.awayTeam.score ?? 0)",
                                        competition: match.competition,
-                                       notificationOn: false)
+                                       notificationOn: false,
+                                       matchCenterAvailable: match.status == MatchStatus.result.rawValue)
         }
         view?.display(viewModels)
     }

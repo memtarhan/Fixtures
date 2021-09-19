@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "notificationOff@1x.png",
+      "filename" : "uefa-europa-league.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "notificationOff@2x.png",
+      "filename" : "uefa-europa-league-2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "notificationOff@3x.png",
+      "filename" : "uefa-europa-league-3.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
@@ -19,8 +19,5 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
-  },
-  "properties" : {
-    "template-rendering-intent" : "template"
   }
 }

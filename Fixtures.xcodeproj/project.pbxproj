@@ -21,6 +21,9 @@
 		43838E5826F75D2700FAC7A9 /* League.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43838E5726F75D2700FAC7A9 /* League.swift */; };
 		43838E5A26F75E5600FAC7A9 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43838E5926F75E5600FAC7A9 /* UserDefaultsKey.swift */; };
 		43838E5C26F7692900FAC7A9 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43838E5B26F7692900FAC7A9 /* UITableView+.swift */; };
+		43838E5E26F7976C00FAC7A9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43838E5D26F7976C00FAC7A9 /* Colors.swift */; };
+		43838E6026F7985000FAC7A9 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43838E5F26F7985000FAC7A9 /* UIView+.swift */; };
+		43838E6426F79F0600FAC7A9 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43838E6326F79F0600FAC7A9 /* UIButton+.swift */; };
 		43E8922426F5FB43006BE3F0 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8922326F5FB43006BE3F0 /* Match.swift */; };
 		43E8922726F5FC52006BE3F0 /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8922626F5FC52006BE3F0 /* APIHelper.swift */; };
 		43E8922926F5FCB1006BE3F0 /* SportsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8922826F5FCB1006BE3F0 /* SportsType.swift */; };
@@ -70,6 +73,9 @@
 		43838E5726F75D2700FAC7A9 /* League.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = League.swift; sourceTree = "<group>"; };
 		43838E5926F75E5600FAC7A9 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		43838E5B26F7692900FAC7A9 /* UITableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
+		43838E5D26F7976C00FAC7A9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		43838E5F26F7985000FAC7A9 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		43838E6326F79F0600FAC7A9 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		43E8922326F5FB43006BE3F0 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		43E8922626F5FC52006BE3F0 /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		43E8922826F5FCB1006BE3F0 /* SportsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsType.swift; sourceTree = "<group>"; };
@@ -206,6 +212,7 @@
 			children = (
 				43E8922626F5FC52006BE3F0 /* APIHelper.swift */,
 				43838E5926F75E5600FAC7A9 /* UserDefaultsKey.swift */,
+				43838E5D26F7976C00FAC7A9 /* Colors.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -213,9 +220,11 @@
 		43E8922A26F60390006BE3F0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				43E8922B26F6039B006BE3F0 /* DateFormatter+.swift */,
 				43E8923526F60FD2006BE3F0 /* Date+.swift */,
+				43E8922B26F6039B006BE3F0 /* DateFormatter+.swift */,
 				43838E5B26F7692900FAC7A9 /* UITableView+.swift */,
+				43838E5F26F7985000FAC7A9 /* UIView+.swift */,
+				43838E6326F79F0600FAC7A9 /* UIButton+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -369,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43838E5A26F75E5600FAC7A9 /* UserDefaultsKey.swift in Sources */,
+				43838E5E26F7976C00FAC7A9 /* Colors.swift in Sources */,
 				43E8923626F60FD2006BE3F0 /* Date+.swift in Sources */,
 				43E8923126F60593006BE3F0 /* MatchTableViewCell.swift in Sources */,
 				43E8923926F61139006BE3F0 /* CircleImageView.swift in Sources */,
@@ -382,9 +392,11 @@
 				43838E5C26F7692900FAC7A9 /* UITableView+.swift in Sources */,
 				436097B126F5F7D200780016 /* HomeInteractor.swift in Sources */,
 				436097AB26F5F64200780016 /* HomeViewController.swift in Sources */,
+				43838E6026F7985000FAC7A9 /* UIView+.swift in Sources */,
 				43E8922426F5FB43006BE3F0 /* Match.swift in Sources */,
 				43838E5826F75D2700FAC7A9 /* League.swift in Sources */,
 				43E8922926F5FCB1006BE3F0 /* SportsType.swift in Sources */,
+				43838E6426F79F0600FAC7A9 /* UIButton+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

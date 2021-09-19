@@ -25,7 +25,7 @@ class HomeViewControllerImpl: UIViewController {
 
     private let cellNibIdentifier = "MatchTableViewCell"
     private let cellReuseIdentifier = "Match"
-    private let cellRowHeight: CGFloat = 300
+    private let cellRowHeight: CGFloat = 270
 
     private var viewModels = [HomeEntity.Match.ViewModel]()
 

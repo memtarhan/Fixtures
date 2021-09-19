@@ -4,8 +4,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,27 +21,25 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x0d-SJ-VHC">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                    <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="Background"/>
             <constraints>
                 <constraint firstItem="x0d-SJ-VHC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="87t-aw-fdx"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="x0d-SJ-VHC" secondAttribute="bottom" id="XfL-JS-DzI"/>
+                <constraint firstAttribute="bottom" secondItem="x0d-SJ-VHC" secondAttribute="bottom" id="XfL-JS-DzI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="x0d-SJ-VHC" secondAttribute="trailing" id="jwn-YB-oiH"/>
-                <constraint firstItem="x0d-SJ-VHC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="mS3-0x-869"/>
+                <constraint firstItem="x0d-SJ-VHC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mS3-0x-869"/>
             </constraints>
             <point key="canvasLocation" x="139" y="129"/>
         </view>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <namedColor name="Background">
+            <color red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

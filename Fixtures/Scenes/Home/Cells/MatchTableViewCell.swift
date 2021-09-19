@@ -10,6 +10,7 @@ import UIKit
 class MatchTableViewCell: UITableViewCell {
     // MARK: - Outlets
 
+    @IBOutlet var containerView: UIView!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var periodLabel: UILabel!
     @IBOutlet var homeTeamNameLabel: UILabel!
@@ -18,11 +19,15 @@ class MatchTableViewCell: UITableViewCell {
     @IBOutlet var scoreLabel: UILabel!
     @IBOutlet var competitionLabel: UILabel!
     @IBOutlet var notificationButton: UIButton!
+    @IBOutlet var matchCentreButton: UIButton!
 
     private var viewModel: HomeEntity.Match.ViewModel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        containerView.roundCorners()
+        matchCentreButton.roundCorners(matchCentreButton.frame.height / 2)
     }
 
     override func prepareForReuse() {
@@ -49,5 +54,12 @@ class MatchTableViewCell: UITableViewCell {
         venueLabel.text = viewModel.venue
         scoreLabel.text = viewModel.score
         competitionLabel.text = viewModel.competition
+
+        if viewModel.matchCenterAvailable {
+            matchCentreButton.enable()
+
+        } else {
+            matchCentreButton.disable()
+        }
     }
 }
