@@ -19,7 +19,7 @@ class MatchTableViewCell: UITableViewCell {
     @IBOutlet var competitionLabel: UILabel!
     @IBOutlet var notificationButton: UIButton!
 
-    private var viewModel: HomeEntity.Init.ViewModel!
+    private var viewModel: HomeEntity.Match.ViewModel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,7 +39,7 @@ class MatchTableViewCell: UITableViewCell {
         sender.setImage(image, for: [])
     }
 
-    func configure(_ viewModel: HomeEntity.Init.ViewModel) {
+    func configure(_ viewModel: HomeEntity.Match.ViewModel) {
         self.viewModel = viewModel
 
         dateLabel.text = viewModel.date

@@ -11,33 +11,75 @@ protocol HomePresenter: AnyObject {
     var view: HomeViewController? { get set }
     var interactor: HomeInteractor? { get set }
 
-    func present()
+    func presentInit()
+    func presentMatches()
+    func presentLiveMatches()
+    func presentLeagueChanged(_ league: League)
 }
 
 class HomePresenterImpl: HomePresenter {
     weak var view: HomeViewController?
     weak var interactor: HomeInteractor?
 
-    func present() {
-        print(#function)
-        interactor?.retrieveMatches(for: .football, competition: 3, season: 2020, { result in
+    private var matches = [Match]()
+    private var shouldDisplaLiveMatches = false
+
+    func presentInit() {
+        guard let league = interactor?.selectedLeague else { return }
+        let viewModel = HomeEntity.Init.ViewModel(title: league.title,
+                                                  liveButtonTitle: shouldDisplaLiveMatches ? "Live": "All")
+        view?.display(viewModel)
+        presentMatches()
+    }
+
+    func presentMatches() {
+        guard let league = interactor?.selectedLeague else { return }
+        let competitionId = league.id
+        interactor?.retrieveMatches(for: .football, competition: competitionId, season: 2021, { result in
             switch result {
             case let .success(matches):
-                let sorted = matches.sorted(by: { $0.date > $1.date }) /// - Sorted in  chronological order
-                let viewModels = sorted.map { match in
-                    HomeEntity.Init.ViewModel(date: match.date.asMatchDate,
-                                              period: match.period,
-                                              homeTeamName: match.homeTeam.name,
-                                              awayTeamName: match.awayTeam.name,
-                                              venue: match.venue.name,
-                                              score: "\(match.homeTeam.score)-\(match.awayTeam.score)",
-                                              competition: match.competition,
-                                              notificationOn: false)
-                }
-                self.view?.display(viewModels)
+                self.matches = matches
+                let sorted = matches.sorted(by: { $0.date < $1.date }) /// - Sorted in  chronological order
+                self.display(matches: sorted)
             case let .failure(error):
                 print(error)
             }
         })
+    }
+
+    func presentLiveMatches() {
+        shouldDisplaLiveMatches = !shouldDisplaLiveMatches
+
+        if shouldDisplaLiveMatches {
+            let liveMatches = matches.filter({ $0.status == MatchStatus.live.rawValue })
+            display(matches: liveMatches)
+
+        } else {
+            display(matches: matches)
+        }
+
+        guard let league = interactor?.selectedLeague else { return }
+        let viewModel = HomeEntity.Init.ViewModel(title: league.title,
+                                                  liveButtonTitle: shouldDisplaLiveMatches ? "Live": "All")
+        view?.display(viewModel)
+    }
+
+    func presentLeagueChanged(_ league: League) {
+        interactor?.selectedLeague = league
+        presentInit()
+    }
+
+    private func display(matches: [Match]) {
+        let viewModels = matches.map { match in
+            HomeEntity.Match.ViewModel(date: match.date.asMatchDate,
+                                       period: match.period,
+                                       homeTeamName: match.homeTeam.name,
+                                       awayTeamName: match.awayTeam.name,
+                                       venue: match.venue?.name,
+                                       score: "\(match.homeTeam.score ?? 0)-\(match.awayTeam.score ?? 0)",
+                                       competition: match.competition,
+                                       notificationOn: false)
+        }
+        view?.display(viewModels)
     }
 }

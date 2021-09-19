@@ -10,7 +10,8 @@ import UIKit
 protocol HomeViewController: AnyObject {
     var presenter: HomePresenter? { get set }
 
-    func display(_ viewModels: [HomeEntity.Init.ViewModel])
+    func display(_ viewModel: HomeEntity.Init.ViewModel)
+    func display(_ viewModels: [HomeEntity.Match.ViewModel])
 }
 
 class HomeViewControllerImpl: UIViewController {
@@ -26,7 +27,9 @@ class HomeViewControllerImpl: UIViewController {
     private let cellReuseIdentifier = "Match"
     private let cellRowHeight: CGFloat = 300
 
-    private var viewModels = [HomeEntity.Init.ViewModel]()
+    private var viewModels = [HomeEntity.Match.ViewModel]()
+
+    private var leftBarButtonItem: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +37,24 @@ class HomeViewControllerImpl: UIViewController {
         setup()
     }
 
+    // MARK: - Actions
+
+    @objc private func didTapLeague(_ sender: UIBarButtonItem) {
+        displayLeagues()
+    }
+
+    // MARK: - Actions
+
+    @objc private func didTapLive(_ sender: UIBarButtonItem) {
+        displayLiveMatches()
+    }
+
     private func setup() {
-        title = "Fixtures"
+        let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left.arrow.right"), style: .done, target: self, action: #selector(didTapLeague(_:)))
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+
+        leftBarButtonItem = UIBarButtonItem(title: "Live", style: .plain, target: self, action: #selector(didTapLive(_:)))
+        navigationItem.leftBarButtonItem = leftBarButtonItem
 
         let cellNib = UINib(nibName: cellNibIdentifier, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: cellReuseIdentifier)
@@ -43,18 +62,48 @@ class HomeViewControllerImpl: UIViewController {
         tableView.dataSource = self
         tableView.rowHeight = cellRowHeight
         tableView.estimatedRowHeight = cellRowHeight
+        tableView.isHidden = true
 
-        presenter?.present()
+        presenter?.presentInit()
+    }
+
+    private func displayLeagues() {
+        let actionSheet = UIAlertController(title: "Choose a league", message: nil, preferredStyle: .actionSheet)
+        League.all.forEach { league in
+            let action = UIAlertAction(title: league.title, style: .default) { _ in
+                self.tableView.isHidden = true
+                self.presenter?.presentLeagueChanged(league)
+            }
+            actionSheet.addAction(action)
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        actionSheet.addAction(cancelAction)
+
+        present(actionSheet, animated: true, completion: nil)
+    }
+
+    private func displayLiveMatches() {
+        tableView.isHidden = true
+        presenter?.presentLiveMatches()
     }
 }
 
 // MARK: - HomeViewController
 
 extension HomeViewControllerImpl: HomeViewController {
-    func display(_ viewModels: [HomeEntity.Init.ViewModel]) {
+    func display(_ viewModel: HomeEntity.Init.ViewModel) {
+        DispatchQueue.main.async {
+            self.title = viewModel.title
+            self.leftBarButtonItem.title = viewModel.liveButtonTitle
+        }
+    }
+
+    func display(_ viewModels: [HomeEntity.Match.ViewModel]) {
         self.viewModels = viewModels
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            self.tableView.isHidden = false
         }
     }
 }
@@ -63,6 +112,8 @@ extension HomeViewControllerImpl: HomeViewController {
 
 extension HomeViewControllerImpl: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if viewModels.isEmpty { tableView.setEmptyMessage("No live matches at the moment") }
+        else { tableView.restore() }
         return viewModels.count
     }
 
