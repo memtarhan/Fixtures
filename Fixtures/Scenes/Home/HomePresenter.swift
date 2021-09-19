@@ -27,7 +27,7 @@ class HomePresenterImpl: HomePresenter {
     func presentInit() {
         guard let league = interactor?.selectedLeague else { return }
         let viewModel = HomeEntity.Init.ViewModel(title: league.title,
-                                                  liveButtonTitle: shouldDisplaLiveMatches ? "Live": "All")
+                                                  liveButtonTitle: shouldDisplaLiveMatches ? "Live" : "All")
         view?.display(viewModel)
         presentMatches()
     }
@@ -60,7 +60,7 @@ class HomePresenterImpl: HomePresenter {
 
         guard let league = interactor?.selectedLeague else { return }
         let viewModel = HomeEntity.Init.ViewModel(title: league.title,
-                                                  liveButtonTitle: shouldDisplaLiveMatches ? "Live": "All")
+                                                  liveButtonTitle: shouldDisplaLiveMatches ? "Live" : "All")
         view?.display(viewModel)
     }
 
@@ -70,16 +70,19 @@ class HomePresenterImpl: HomePresenter {
     }
 
     private func display(matches: [Match]) {
-        let viewModels = matches.map { match in
-            HomeEntity.Match.ViewModel(date: match.date.asMatchDate,
-                                       period: match.period,
-                                       homeTeamName: match.homeTeam.abbreviation,
-                                       awayTeamName: match.awayTeam.abbreviation,
-                                       venue: match.venue?.name,
-                                       score: "\(match.homeTeam.score ?? 0)-\(match.awayTeam.score ?? 0)",
-                                       competition: match.competition,
-                                       notificationOn: false,
-                                       matchCenterAvailable: match.status == MatchStatus.result.rawValue)
+        let viewModels = matches.map { match -> HomeEntity.Match.ViewModel in
+            let status = MatchStatus(rawValue: match.status ?? "fixture")
+            let countdown = status == .fixture ? match.date.countdown: nil
+            return HomeEntity.Match.ViewModel(date: match.date.asMatchDate,
+                                              period: match.period,
+                                              homeTeamName: match.homeTeam.abbreviation,
+                                              awayTeamName: match.awayTeam.abbreviation,
+                                              venue: match.venue?.name,
+                                              score: "\(match.homeTeam.score ?? 0)-\(match.awayTeam.score ?? 0)",
+                                              competition: match.competition,
+                                              notificationOn: false,
+                                              matchCenterAvailable: match.status == MatchStatus.result.rawValue,
+                                              countdown: countdown)
         }
         view?.display(viewModels)
     }

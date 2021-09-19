@@ -222,9 +222,9 @@
 			children = (
 				43E8923526F60FD2006BE3F0 /* Date+.swift */,
 				43E8922B26F6039B006BE3F0 /* DateFormatter+.swift */,
+				43838E6326F79F0600FAC7A9 /* UIButton+.swift */,
 				43838E5B26F7692900FAC7A9 /* UITableView+.swift */,
 				43838E5F26F7985000FAC7A9 /* UIView+.swift */,
-				43838E6326F79F0600FAC7A9 /* UIButton+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";

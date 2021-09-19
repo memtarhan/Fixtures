@@ -26,6 +26,7 @@ struct HomeEntity {
             let competition: String?
             var notificationOn: Bool
             var matchCenterAvailable: Bool
+            var countdown: String?
         }
     }
 }

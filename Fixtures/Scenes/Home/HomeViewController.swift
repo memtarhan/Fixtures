@@ -50,10 +50,10 @@ class HomeViewControllerImpl: UIViewController {
     }
 
     private func setup() {
-        let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left.arrow.right"), style: .done, target: self, action: #selector(didTapLeague(_:)))
+        let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left.arrow.right"), style: .plain, target: self, action: #selector(didTapLeague(_:)))
         navigationItem.rightBarButtonItem = rightBarButtonItem
 
-        leftBarButtonItem = UIBarButtonItem(title: "Live", style: .plain, target: self, action: #selector(didTapLive(_:)))
+        leftBarButtonItem = UIBarButtonItem(title: "Live", style: .done, target: self, action: #selector(didTapLive(_:)))
         navigationItem.leftBarButtonItem = leftBarButtonItem
 
         let cellNib = UINib(nibName: cellNibIdentifier, bundle: nil)

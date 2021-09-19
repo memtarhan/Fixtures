@@ -47,7 +47,12 @@ class MatchTableViewCell: UITableViewCell {
     func configure(_ viewModel: HomeEntity.Match.ViewModel) {
         self.viewModel = viewModel
 
-        dateLabel.text = viewModel.date
+        if let countdown = viewModel.countdown {
+            dateLabel.text = countdown
+
+        } else {
+            dateLabel.text = viewModel.date
+        }
         periodLabel.text = viewModel.period
         homeTeamNameLabel.text = viewModel.homeTeamName
         awayTeamNameLabel.text = viewModel.awayTeamName
